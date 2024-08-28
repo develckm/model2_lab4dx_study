@@ -40,12 +40,25 @@ public class CustomerDaoImp implements CustomerDao {
 
     @Override
     public CustomerDto findById(int id) throws Exception {
-        return null;
+        CustomerDto customer=null;
+        String sql="SELECT * FROM CUSTOMER WHERE CUSTOMER_ID=?";
+        pstmt=conn.prepareStatement(sql);
+        pstmt.setInt(1, id);
+        rs=pstmt.executeQuery();
+        if(rs.next()) {
+            customer=new CustomerDto();
+            customer.setCustomerEmail(rs.getString("CUSTOMER_EMAIL"));
+            customer.setCustomerName(rs.getString("CUSTOMER_NAME"));
+            customer.setCustomerId(rs.getInt("CUSTOMER_ID"));
+            customer.setCustomerPhone(rs.getString("CUSTOMER_PHONE"));
+        }
+        return customer;
     }
 
     @Override
     public int save(CustomerDto customerDto) throws Exception {
-        return 0;
+        int save=0;
+        return save;
     }
 
     @Override
