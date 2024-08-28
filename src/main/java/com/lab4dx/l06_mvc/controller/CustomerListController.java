@@ -25,8 +25,8 @@ public class CustomerListController extends HttpServlet {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        resp.getWriter().print(customers); //불러왔나 확인
-
+        req.setAttribute("customers", customers);
+        //getRequestDispatcher  "/ => webapp 하위"
+        req.getRequestDispatcher("/customerList.jsp").forward(req, resp);
     }
 }
