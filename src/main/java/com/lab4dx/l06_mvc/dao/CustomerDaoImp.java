@@ -74,7 +74,13 @@ public class CustomerDaoImp implements CustomerDao {
     public static void main(String[] args) throws Exception {
         Connection conn=DBConnection.getConnection();
         CustomerDaoImp customerDao=new CustomerDaoImp(conn);
+        //findAll test
         List<CustomerDto> customers=customerDao.findAll();
         System.out.println(customers.toString());
+
+        //findById test
+        CustomerDto customer=customerDao.findById(1);
+        System.out.println(customer.toString());
+
     }
 }
